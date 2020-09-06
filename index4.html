@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+<!--  <script src="js/jquery-3.3.1.js"></script>-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+  <form>
+    <input type="text" name="username" />
+    <input type="text" name="password" />
+    <input type="submit" name="button" value="Log in" disabled />
+  </form>
+  
+
+  <script>
+
+    // if ($('input[name="username"]').val().length > 3 && $('input[name="password"]').val().length > 3) {
+    //   $('input[name="button"]').disabled = false;
+    // }
+    var counter = 0;
+    $('input[name="username"]').on('change', function() {
+      if ($('input[name="username"]').val().length > 6) {
+        counter++;
+      }
+      console.log(counter);
+      if (counter === 2) {
+        $('input[name="button"]').disabled = false;
+      }
+    }); 
+    $('input[name="password"]').on('change', function() {
+      if ($('input[name="password"]').val().length > 6) {
+        counter++;
+      }
+    });
+    if (counter === 2) {
+      console.log(counter);
+      $('input[name="button"]').disabled = false;
+    }
+  </script>
+</body>
+</html>

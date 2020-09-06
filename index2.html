@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="container"></div>
+  <a id="start">Start</a> |
+  <a id="stop">Stop</a>
+<!--  <script src="js/jquery-3.3.1.js"></script>-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    var container = $("#container");
+    var start = $("#start");
+    var stop = $("#stop");
+    var interval;
+    var getRandom = function(min, max) {
+      return Math.round(Math.random() * (max - min) + min);
+    };
+
+    
+    var add = function() {
+      var div = $("<div>").addClass("element").text(getRandom(0, 20));
+      container.append(div);
+    }
+
+
+    $("#start").on("click", function() {
+      interval = setInterval(add, 1000);
+    });
+
+    $("#stop").on("click", function() {
+      clearInterval(interval);
+    });
+  </script>
+</body>
+</html>

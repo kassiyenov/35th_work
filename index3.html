@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <span id="minutes">00</span>:
+    <span id="seconds">00</span>
+  </div>
+  <button id="start">Start</button>
+  <button id="pause">Pause</button>
+  <button id="reset">Reset</button>
+
+<!--  <script src="js/jquery-3.3.1.js"></script>-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    var seconds = $("#seconds");
+    var minutes = $("#minutes");
+    var start = $("#start");
+    var pause = $("#pause");
+    var reset = $("#reset");
+    var intervalSec;
+    var intervalMin;
+    var counterSec = 0;
+    var counterMin = 0;
+
+    var timerSec = function() {
+      if (counterSec === 59) {
+        counterSec = 0;
+      }
+      counterSec++;
+      if (counterSec < 10) {
+        seconds.text("0" + counterSec);
+      } else {
+        seconds.text(counterSec);
+      } 
+    }
+    var timerMin = function() {
+      counterMin++;
+      if (counterMin < 10) {
+        minutes.text("0" + counterMin);
+      } else {
+        minutes.text(counterMin);
+      }
+    }
+
+    start.on("click", function() {
+      intervalSec = setInterval(timerSec, 1000);
+      intervalMin = setInterval(timerMin, 60000);
+    });
+    pause.on("click", function() {
+      clearInterval(intervalSec);
+      clearInterval(intervalMin);
+    });
+    reset.on("click", function() {
+      counterSec = 0;
+      counterMin = 0;
+    });
+
+  </script>
+</body>
+</html>
